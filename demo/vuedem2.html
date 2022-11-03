@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h1 :title="message">
+            {{content}}
+            {{message}}
+        </h1> -->
+        <form action="" v-on:submit.prevent="onSubmit">
+            <input type="text" :value="searchMap.keyword"/>
+            <input type="name" v-model="user.username"/>
+            <button v-on:click="search()"></button>
+            <button @click="search()"></button>
+            <button type="submit"></button>
+            <p>{{searchMap.keyword}}</p>
+            <br>
+            <input type="checkbox" v-model="ok">
+            <h1 v-if="ok">sure </h1>
+            <h1 v-else>not ok</h1>
+        </form>
+        <br>
+        <ul>
+            <li v-for="n in 10">{{n}}</li>
+        </ul>
+        <ol>
+            <li v-for="(n,index) in 10">{{n}}..{{index}}</li>
+        </ol>
+
+        <table>
+            <tr v-for="user in userlist">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                // content: 'im title',
+                // message: 'page load on ' + new Date().toLocaleString()
+                userlist:[
+                    {id:1, name:"hel"},
+                    {id:2,name:"leh"}
+                ],
+                user:{},
+                ok:false,
+                searchMap:{
+                    keyword:'lc'
+                    
+                },
+                result:{}
+            },
+            methods:{
+                onSubmit(){
+                    if(this.user.username){
+                        console.log('submit')
+                    }else{
+                        alert("please")
+                    }
+                },
+                search(){
+                    console.log('search..')
+                },
+                f1(){
+                    console.log('f1...')
+                }
+            }
+            
+        })
+    </script>
+</body>
+
+</html>
